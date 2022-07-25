@@ -5,11 +5,34 @@
 
 .set{
     margin: 0 auto;
+    margin-top: 10px;
     width: 90%;
+    display: flex;
 }
 
 .setVal{
-    width: 30vw;
-    height: 30vh;
+    width: 30%;
+    height: 10vh;
     text-align: center;
+    margin: 0 auto;
+    font-size: 300%;
+}
+
+.button-container{
+    width: 13%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+}
+
+.btn{
+    margin: 0 auto;
+    font-size: 200%;
+    padding: 1px 11px;
+    text-align: center;
+}
+
+#remain{
+    text-align: center;
+    font-size: 40vh;
 }
