@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.set{
+    margin: 0 auto;
+    width: 90%;
+}
+
+.setVal{
+    width: 30vw;
+    height: 30vh;
+    text-align: center;
+}
