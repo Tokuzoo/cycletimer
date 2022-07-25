@@ -1,9 +1,9 @@
 const $remain = document.getElementById("remain");
-const $startButton = document.getElementById("startButton");
-const $stopButton = document.getElementById("stopButton");
 const $toggleButton = document.getElementById("toggleButton");
+const $resetButton = document.getElementById("resetButton");
 
-const sound = new Audio('end.mp3');
+const click = new Audio('click.mp3');
+const alarm = new Audio('alarm.mp3');
 
 let time = -1;
 
@@ -11,7 +11,7 @@ working = false;
 
 $toggleButton.onclick = function() {
     if(time === -1) time = document.getElementById("studySet").value * 60; 
-    sound.play();
+    click.play();
 
     if(working){
         clearInterval(move);
@@ -22,6 +22,14 @@ $toggleButton.onclick = function() {
     }
 
     working = working ? false : true;
+}
+
+$resetButton.onclick = function() {
+    working = false;
+    click.play();
+    time = -1;
+    clearInterval(move);
+    $remain.textContent = "00:00";
 }
 
 function showTime() {
@@ -42,7 +50,7 @@ function update() {
     showTime();
 
     if(time <= 0){
-        sound.play();
+        alarm.play();
 
         if(studied){
             time = document.getElementById("breakSet").value * 60;
