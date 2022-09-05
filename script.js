@@ -2,21 +2,24 @@ const $remain = document.getElementById("remain");
 const $toggleButton = document.getElementById("toggleButton");
 const $resetButton = document.getElementById("resetButton");
 
-const click = new Audio('click.mp3');
 const alarm = new Audio('alarm.mp3');
 
 let time = -1;
+let setTime = -1;
 
 working = false;
 
 $toggleButton.onclick = function() {
-    if(time === -1) time = document.getElementById("studySet").value * 60; 
-    click.play();
+    if(time === -1) {
+        setTime = document.getElementById("studySet").value * 60;
+        time = setTime;
+    }
 
     if(working){
         clearInterval(move);
         $toggleButton.textContent = "start";
     } else {
+        update();
         move = setInterval(update, 1000);
         $toggleButton.textContent = "stop";
     }
@@ -25,8 +28,8 @@ $toggleButton.onclick = function() {
 }
 
 $resetButton.onclick = function() {
+    if(working) $toggleButton.textContent = "start";
     working = false;
-    click.play();
     time = -1;
     clearInterval(move);
     $remain.textContent = "00:00";
@@ -41,25 +44,29 @@ function showTime() {
     if(sec.length === 1) sec = '0' + sec;
 
     $remain.textContent = min + ':' + sec;
+
+    document.getElementById("progress").value = time/setTime;
 }
 
 studied = true;
 
 function update() {
-    time--;
     showTime();
-
     if(time <= 0){
         alarm.play();
 
         if(studied){
-            time = document.getElementById("breakSet").value * 60;
+            setTime = document.getElementById("breakSet").value * 60;
+            time = setTime;
         } else {
-            time = document.getElementById("studySet").value * 60;
+            setTime = document.getElementById("studySet").value * 60;
+            time = setTime;
         }
 
         studied = studied ? false : true;
     }
+
+    time--;
 }
 
 function getValues() {
