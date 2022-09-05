@@ -33,6 +33,14 @@
 }
 
 #remain{
+    font-size: 35vh;
+}
+
+.disp{
     text-align: center;
-    font-size: 40vh;
+}
+
+#progress{
+    width: 82%;
+    height: 8.5vh;
 }
