@@ -2,14 +2,21 @@ const $remain = document.getElementById("remain");
 const $toggleButton = document.getElementById("toggleButton");
 const $resetButton = document.getElementById("resetButton");
 
-const alarm = new Audio('alarm.mp3');
-
 let time = -1;
 let setTime = -1;
 
 working = false;
 
 $toggleButton.onclick = function() {
+    let none = new Audio('none.mp3');
+
+    if(none.readyState < 4){
+        none.load();
+    }
+
+    none.play();
+
+    alarm = new Audio('alarm.mp3');
     alarm.load();
 
     if(time === -1) {
