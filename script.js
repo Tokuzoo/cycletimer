@@ -1,12 +1,13 @@
 const $add = document.getElementById("add");
+const $confirm = document.getElementById("confirm");
+const $tasks_disp = document.getElementById("tasks_disp");
 const $task_container = document.getElementById("task_container");
 const $task_page = document.getElementById("task_page");
+// -----
 const $timer_page = document.getElementById("timer_page");
 const $remain = document.getElementById("remain");
 const $toggleButton = document.getElementById("toggleButton");
 const $resetButton = document.getElementById("resetButton");
-const $confirm = document.getElementById("confirm");
-const $tasks_disp = document.getElementById("tasks_disp");
 
 $add.onclick = function() {
     let div = document.createElement("div");
@@ -23,7 +24,7 @@ $add.onclick = function() {
     div.appendChild(del);
 
     $tasks_del = document.getElementsByClassName("tasks_del");
-    del_handler($tasks_del);
+    del_handler($tasks_del, "tasks_div");
 }
 
 $confirm.onclick = function() {
@@ -46,9 +47,21 @@ $confirm.onclick = function() {
         div.appendChild(fin);
 
         $disp_fin = document.getElementsByClassName("disp_fin");
-        fin_handler($disp_fin);
+        del_handler($disp_fin, "disp_div");
     }
 }
+
+const del_handler = (c, f) => {
+    c[c.length-1].addEventListener('click', (e) => {
+        idx = Array.prototype.indexOf.call(c, e.target);
+    
+        $div = document.getElementsByClassName(f);
+
+        $div[idx].remove();
+    })
+}
+
+// -----
 
 let time = -1;
 let setTime = -1;
@@ -129,26 +142,4 @@ function update() {
 function getValues() {
     window.$studySet = document.getElementById("studySet");
     window.$breakSet = document.getElementById("breakSet");
-}
-
-let k;
-
-const del_handler = (c) => {
-    c[c.length-1].addEventListener('click', (e) => {
-        k = Array.prototype.indexOf.call(c, e.target);
-    
-        $div = document.getElementsByClassName("tasks_div");
-
-        $div[k].remove();
-    })
-}
-
-const fin_handler = (c) => {
-    c[c.length-1].addEventListener('click', (e) => {
-        k = Array.prototype.indexOf.call(c, e.target);
-
-        $div = document.getElementsByClassName("disp_div");
-
-        $div[k].remove();
-    })
 }
