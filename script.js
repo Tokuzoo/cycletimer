@@ -15,11 +15,11 @@ $add.onclick = function() {
 
     let form = document.createElement("input");
     form.className = "tasks_form";
+    div.appendChild(form);
 
     let del = document.createElement("button");
     del.className = "tasks_del";
-
-    div.appendChild(form);
+    del.textContent = "削除"
     div.appendChild(del);
 
     $tasks_del = document.getElementsByClassName("tasks_del");
@@ -42,6 +42,7 @@ $confirm.onclick = function() {
 
         let fin = document.createElement("button");
         fin.className = "disp_fin";
+        fin.textContent = "完了"
         div.appendChild(fin);
 
         $disp_fin = document.getElementsByClassName("disp_fin");
