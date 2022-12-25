@@ -17,7 +17,6 @@ $toggleButton.onclick = function() {
     none.play();
 
     alarm = new Audio('alarm.mp3');
-    alarm.load();
 
     if(time === -1) {
         setTime = document.getElementById("studySet").value * 60;
@@ -62,6 +61,7 @@ studied = true;
 function update() {
     showTime();
     if(time <= 0){
+        alarm.load();
         alarm.play();
 
         if(studied){
