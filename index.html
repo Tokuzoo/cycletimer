@@ -9,19 +9,34 @@
 </head>
 <body>
 
-    <div class="set">
-        <input type="number" id="studySet" class="setVal" placeholder="40">
-        <input type="number" id="breakSet" class="setVal" placeholder="10">
+    <div id="task_page">
+
+        <button id="add">タスクを追加する</button>
+
+        <div id="task_container"></div>
+
+        <button id="confirm">確定</button>
     </div>
 
-    <div class="button-container">
-        <button id="toggleButton" class="btn">start</button>
-        <button id="resetButton" class="btn">reset</button>
-    </div>
+    <div id="timer_page" class="hidden">
+        <div class="set">
+            <input type="number" id="studySet" class="setVal" placeholder="40">
+            <input type="number" id="breakSet" class="setVal" placeholder="10">
+        </div>
 
-    <div class="disp">
-        <h1 id="remain">00:00</h1>
-        <progress id="progress" value="0" max="1"></progress>
+        <div class="button-container">
+            <button id="toggleButton" class="btn">start</button>
+            <button id="resetButton" class="btn">reset</button>
+        </div>
+
+        <div id="tasks_disp">
+
+        </div>
+
+        <div class="disp">
+            <h1 id="remain">00:00</h1>
+            <progress id="progress" value="0" max="1"></progress>
+        </div>
     </div>
 
     <script src="script.js"></script>
