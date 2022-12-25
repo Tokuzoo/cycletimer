@@ -10,6 +10,8 @@ let setTime = -1;
 working = false;
 
 $toggleButton.onclick = function() {
+    alarm.load();
+
     if(time === -1) {
         setTime = document.getElementById("studySet").value * 60;
         time = setTime;
