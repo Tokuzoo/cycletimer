@@ -45,3 +45,32 @@
     width: 80%;
     height: 30vh;
 }
+
+.hidden{
+    display: none;
+}
+
+.tasks_div{
+    display: flex;
+}
+
+.tasks_form{
+    opacity: 1;
+}
+
+.tasks_del{
+    width: 30px;
+}
+
+.disp_div{
+    display: flex;
+}
+
+.disp_task{
+    opacity: 1;
+}
+
+.disp_fin{
+    opacity: 1;
+    width: 30px;
+}
