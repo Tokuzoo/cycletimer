@@ -28,6 +28,13 @@ $add.onclick = function() {
 }
 
 $confirm.onclick = function() {
+    for(let i=0; i<$tasks_del.length; i++){
+        if(document.getElementsByClassName("tasks_form")[i].value === ""){
+            alert("空白のタスクがあります!");
+            return;
+        }
+    }
+
     $task_page.classList.add("hidden");
     $timer_page.classList.toggle("hidden");
 
@@ -40,16 +47,20 @@ $confirm.onclick = function() {
         task.textContent = document.getElementsByClassName("tasks_form")[i].value;
         task.className = "disp_task";
         div.appendChild(task);
-
+    
         let fin = document.createElement("button");
         fin.className = "disp_fin";
         fin.textContent = "完了"
         div.appendChild(fin);
-
+    
         $disp_fin = document.getElementsByClassName("disp_fin");
         del_handler($disp_fin, "disp_div");
+
+        tasks_count = $tasks_del.length;
     }
 }
+
+let remove_count = 0;
 
 const del_handler = (c, f) => {
     c[c.length-1].addEventListener('click', (e) => {
@@ -58,6 +69,13 @@ const del_handler = (c, f) => {
         $div = document.getElementsByClassName(f);
 
         $div[idx].remove();
+
+        if(c === $disp_fin){
+            remove_count++;
+            if(remove_count === tasks_count){
+                alert("全部終わったよ！よく頑張った^_^")
+            }
+        }
     })
 }
 
