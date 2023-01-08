@@ -28,12 +28,14 @@ $add.onclick = function() {
 }
 
 $confirm.onclick = function() {
-    for(let i=0; i<$tasks_del.length; i++){
-        if(document.getElementsByClassName("tasks_form")[i].value === ""){
-            alert("空白のタスクがあります!");
-            return;
+    try{
+        for(let i=0; i<$tasks_del.length; i++){
+            if(document.getElementsByClassName("tasks_form")[i].value === ""){
+                alert("空白のタスクがあります!");
+                return;
+            }
         }
-    }
+    } catch(e){}
 
     $task_page.classList.add("hidden");
     $timer_page.classList.toggle("hidden");
